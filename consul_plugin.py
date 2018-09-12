@@ -27,7 +27,7 @@ def _format_dimensions(dimensions):
     Formats a dictionary as a comma-delimited list of key=value tokens.
     This was copied from docker-collectd-plugin.
     '''
-    return ','.join(['='.join((key.replace('.', '_'), value))
+    return '_'.join(['='.join((key.replace('.', '_'), value))
                     for key, value in dimensions.iteritems()])
 
 
@@ -183,7 +183,7 @@ class MetricSink(object):
         emit_value.values = [metric_record.value]
         emit_value.type = metric_record.type
         emit_value.type_instance = metric_record.name
-        emit_value.plugin_instance = '[{0}]'.format(
+        emit_value.plugin_instance = '{0}'.format(
             _format_dimensions(metric_record.dimensions))
 
         # With some versions of CollectD, a dummy metadata map must be added
