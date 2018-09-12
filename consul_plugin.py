@@ -183,8 +183,7 @@ class MetricSink(object):
         emit_value.values = [metric_record.value]
         emit_value.type = metric_record.type
         emit_value.type_instance = metric_record.name
-        emit_value.plugin_instance = '{0}'.format(
-            _format_dimensions(metric_record.dimensions))
+        emit_value.plugin_instance = "collectd-consul"
 
         # With some versions of CollectD, a dummy metadata map must be added
         # to each value for it to be correctly serialized to JSON by the
